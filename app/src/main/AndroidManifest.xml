@@ -3,26 +3,20 @@
     package="com.droid.notebook">
 
     <application
+        android:name=".NotebookApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notebook">
-        <activity
-            android:name=".ui.SplashActivity"
-            android:theme="@style/Theme.Notebook.NoActionBar">
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.NotebooksActivity"></activity>
     </application>
 
 </manifest>
