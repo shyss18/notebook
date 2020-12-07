@@ -1,5 +1,5 @@
 package com.droid.notebook.utils.constants
 
-class Constants {
-    
+object Constants {
+    const val splashTimeOut: Long = 1500
 }
