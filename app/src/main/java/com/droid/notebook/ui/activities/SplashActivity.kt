@@ -1,4 +1,4 @@
-package com.droid.notebook.ui
+package com.droid.notebook.ui.activities
 
 import android.os.Bundle
 import android.os.Handler
