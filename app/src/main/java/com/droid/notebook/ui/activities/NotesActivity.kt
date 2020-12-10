@@ -6,39 +6,39 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.droid.notebook.R
-import com.droid.notebook.core.viewModels.NotebooksViewModel
-import com.droid.notebook.databinding.ActivityNotebooksBinding
+import com.droid.notebook.core.viewModels.NotesViewModel
+import com.droid.notebook.databinding.ActivityNotesBinding
 import com.droid.notebook.ui.adapters.NotesAdapter
 import com.droid.notebook.utils.decorations.NotesItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NotesActivity : AppCompatActivity() {
-    private lateinit var notebooksViewModel: NotebooksViewModel
+    private lateinit var notesViewModel: NotesViewModel
 
-    private val binding: ActivityNotebooksBinding by lazy {
-        DataBindingUtil.setContentView<ActivityNotebooksBinding>(this, R.layout.activity_notebooks)
+    private val binding: ActivityNotesBinding by lazy {
+        DataBindingUtil.setContentView<ActivityNotesBinding>(this, R.layout.activity_notes)
             .apply {
                 lifecycleOwner = this@NotesActivity
-                viewModel = notebooksViewModel
+                viewModel = notesViewModel
             }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        notebooksViewModel = ViewModelProvider(this)[NotebooksViewModel::class.java]
+        notesViewModel = ViewModelProvider(this)[NotesViewModel::class.java]
 
         val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.notebooksRecyclerViewNotes.layoutManager = gridLayoutManager
+        binding.notesRecyclerViewNotes.layoutManager = gridLayoutManager
 
         val itemDecoration = NotesItemDecoration(resources.getDimensionPixelOffset(R.dimen.notes_offset))
-        binding.notebooksRecyclerViewNotes.addItemDecoration(itemDecoration)
+        binding.notesRecyclerViewNotes.addItemDecoration(itemDecoration)
 
         val notesAdapter = NotesAdapter()
         binding.adapter = notesAdapter
 
-        notebooksViewModel.notes.observe(this, {
-            it.let(notesAdapter::submitList)
+        notesViewModel.notes.observe(this, {
+            it?.let(notesAdapter::submitList)
         })
     }
 }

@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.droid.notebook.core.services.interfaces.NotesService
 import com.droid.notebook.data.Note
 
-class NotebooksViewModel @ViewModelInject constructor(
+class NotesViewModel @ViewModelInject constructor(
     private val notesService: NotesService,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) :
@@ -21,6 +21,10 @@ class NotebooksViewModel @ViewModelInject constructor(
 
     init {
         getNotes()
+    }
+
+    fun createNoteCommand() {
+
     }
 
     private fun getNotes() {

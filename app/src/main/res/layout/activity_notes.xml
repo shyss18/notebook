@@ -4,25 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="adapter"
             type="com.droid.notebook.ui.adapters.NotesAdapter" />
+
         <variable
             name="viewModel"
-            type="com.droid.notebook.core.viewModels.NotebooksViewModel" />
+            type="com.droid.notebook.core.viewModels.NotesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@color/primary"
         android:paddingStart="16dp"
         android:paddingTop="16dp"
         android:paddingEnd="16dp"
         tools:context=".ui.activities.NotesActivity">
 
         <TextView
-            android:id="@+id/notebooks_text_title"
+            android:id="@+id/notes_text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -34,15 +36,31 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/notebooks_recyclerView_notes"
+            android:id="@+id/notes_recyclerView_notes"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/notebooks_text_title"
+            app:layout_constraintTop_toBottomOf="@+id/notes_text_title"
             app:setAdapter="@{adapter}"
             tools:listitem="@layout/item_note" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/notes_float_button_add_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:clickable="true"
+            android:onClick="@{() -> viewModel.createNoteCommand()}"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/background_add_note"
+            app:tint="@color/white" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
