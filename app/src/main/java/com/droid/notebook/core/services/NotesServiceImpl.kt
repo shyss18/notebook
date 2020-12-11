@@ -2,6 +2,8 @@ package com.droid.notebook.core.services
 
 import com.droid.notebook.core.services.interfaces.NotesService
 import com.droid.notebook.data.Note
+import com.droid.notebook.utils.constants.Constants
+import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
@@ -10,7 +12,14 @@ class NotesServiceImpl @Inject constructor() : NotesService {
 
     init {
         for (i in 0..10) {
-            _notes.add(Note(i, "Note$i", "Note description $i", Calendar.getInstance().time))
+            _notes.add(
+                Note(
+                    i,
+                    "Note$i",
+                    "Note description $i",
+                    SimpleDateFormat(Constants.dateFormat).format(Calendar.getInstance().time)
+                )
+            )
         }
     }
 
