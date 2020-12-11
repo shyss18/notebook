@@ -9,6 +9,7 @@ import com.droid.notebook.R
 import com.droid.notebook.core.viewModels.NotesViewModel
 import com.droid.notebook.databinding.ActivityNotesBinding
 import com.droid.notebook.ui.adapters.NotesAdapter
+import com.droid.notebook.ui.adapters.listeners.NotesClickListener
 import com.droid.notebook.utils.decorations.NotesItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,10 +32,14 @@ class NotesActivity : AppCompatActivity() {
         val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.notesRecyclerViewNotes.layoutManager = gridLayoutManager
 
-        val itemDecoration = NotesItemDecoration(resources.getDimensionPixelOffset(R.dimen.notes_offset))
+        val itemDecoration =
+            NotesItemDecoration(resources.getDimensionPixelOffset(R.dimen.notes_offset))
         binding.notesRecyclerViewNotes.addItemDecoration(itemDecoration)
 
-        val notesAdapter = NotesAdapter()
+        val notesAdapter = NotesAdapter(NotesClickListener { note ->
+            notesViewModel.openNoteCommand(note)
+        })
+
         binding.adapter = notesAdapter
 
         notesViewModel.notes.observe(this, {

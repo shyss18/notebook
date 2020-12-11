@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Notebook</string>
     <string name="notebooks_title">Заметки</string>
-    <string name="note_details_save">Сохранить</string>
     <string name="note_details_title">Заголовок</string>
     <string name="note_details_description">Описание...</string>
 </resources>

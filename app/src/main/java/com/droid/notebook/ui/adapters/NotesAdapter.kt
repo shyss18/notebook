@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.droid.notebook.data.Note
 import com.droid.notebook.databinding.ItemNoteBinding
+import com.droid.notebook.ui.adapters.listeners.NotesClickListener
 import com.droid.notebook.ui.adapters.viewHolders.NoteViewHolder
 
-class NotesAdapter : ListAdapter<Note, NoteViewHolder> (Companion) {
-    companion object: DiffUtil.ItemCallback<Note> () {
+class NotesAdapter(private val clickListener: NotesClickListener) :
+    ListAdapter<Note, NoteViewHolder>(Companion) {
+    companion object : DiffUtil.ItemCallback<Note>() {
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
             return oldItem === newItem
         }
@@ -29,6 +31,7 @@ class NotesAdapter : ListAdapter<Note, NoteViewHolder> (Companion) {
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.binding.note = currentItem
+        holder.binding.clickListener = clickListener
         holder.binding.executePendingBindings()
     }
 }

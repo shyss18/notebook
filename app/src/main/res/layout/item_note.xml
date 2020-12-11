@@ -8,12 +8,17 @@
         <variable
             name="note"
             type="com.droid.notebook.data.Note" />
+
+        <variable
+            name="clickListener"
+            type="com.droid.notebook.ui.adapters.listeners.NotesClickListener" />
     </data>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/background_item_note"
+        android:onClick="@{() -> clickListener.onClick(note)}"
         android:orientation="vertical"
         android:padding="20dp">
 

@@ -29,6 +29,10 @@ class NotesViewModel @ViewModelInject constructor(
         appNavigator.navigateToNoteDetailsActivity()
     }
 
+    fun openNoteCommand(note: Note) {
+        appNavigator.navigateToNoteDetailsActivity(note)
+    }
+
     private fun getNotes() {
         val notes = notesService.getNotes()
         if (notes.isNotEmpty()) {
