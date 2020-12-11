@@ -22,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_button"
+            android:onClick="@{() -> viewModel.goBackCommand()}"
             android:src="@drawable/background_button_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:backgroundTint="@color/gray"
+            android:onClick="@{() -> viewModel.saveNoteCommand()}"
             android:text="@string/note_details_save"
             android:textAllCaps="false"
             android:textStyle="bold"
@@ -67,6 +69,7 @@
             android:inputType="textMultiLine"
             android:padding="5dp"
             android:text="@{viewModel.description}"
+            android:textColor="@color/white"
             android:textColorHint="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
