@@ -2,6 +2,8 @@ package com.droid.notebook.di
 
 import com.droid.notebook.core.services.NotesServiceImpl
 import com.droid.notebook.core.services.interfaces.NotesService
+import com.droid.notebook.data.repositories.NotesRepository
+import com.droid.notebook.data.repositories.NotesRepositoryImpl
 import com.droid.notebook.utils.navigator.AppNavigator
 import com.droid.notebook.utils.navigator.AppNavigatorImpl
 import dagger.Binds
@@ -17,5 +19,8 @@ abstract class ApplicationModule {
     abstract fun bindNavigator(impl: AppNavigatorImpl): AppNavigator
 
     @Binds
-    abstract fun bindNotesService(impl: NotesServiceImpl) : NotesService
+    abstract fun bindNotesService(impl: NotesServiceImpl): NotesService
+
+    @Binds
+    abstract fun bindNotesRepository(impl: NotesRepositoryImpl): NotesRepository
 }

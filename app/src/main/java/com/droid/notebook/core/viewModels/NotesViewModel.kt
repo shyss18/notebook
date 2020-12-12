@@ -3,9 +3,9 @@ package com.droid.notebook.core.viewModels
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.droid.notebook.core.services.interfaces.NotesService
 import com.droid.notebook.data.Note
 import com.droid.notebook.utils.navigator.AppNavigator
@@ -17,9 +17,7 @@ class NotesViewModel @ViewModelInject constructor(
 ) :
     ViewModel() {
 
-    private val _notes = MutableLiveData<List<Note>>()
-    val notes: LiveData<List<Note>>
-        get() = _notes
+    lateinit var notes: LiveData<List<Note>>
 
     init {
         getNotes()
@@ -34,9 +32,6 @@ class NotesViewModel @ViewModelInject constructor(
     }
 
     private fun getNotes() {
-        val notes = notesService.getNotes()
-        if (notes.isNotEmpty()) {
-            _notes.postValue(notes)
-        }
+        this.notes = notesService.getNotes().asLiveData()
     }
 }

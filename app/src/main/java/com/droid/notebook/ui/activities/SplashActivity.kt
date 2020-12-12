@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SplashActivity : AppCompatActivity() {
+class SplashActivity @Inject constructor() : AppCompatActivity() {
 
     @Inject
     lateinit var navigator: AppNavigator
