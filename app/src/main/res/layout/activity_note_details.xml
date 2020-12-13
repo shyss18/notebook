@@ -28,15 +28,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/note_details_button_save"
+            android:id="@+id/note_details_button_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_button"
-            android:onClick="@{() -> viewModel.saveNoteCommand()}"
+            android:src="@drawable/background_delete_button"
+            app:bindVisibility="@{viewModel.isEditMode}"
             app:layout_constraintBottom_toBottomOf="@+id/note_details_image_button_back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/note_details_image_button_back"
-            app:setResourceImage="@{viewModel.isEditMode}" />
+            app:layout_constraintTop_toTopOf="@+id/note_details_image_button_back" />
 
         <EditText
             android:id="@+id/note_details_edit_title"
@@ -87,5 +87,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/note_details_edit_title"
             tools:text="May 10, 2020" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/note_details_button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:clickable="true"
+            android:onClick="@{() -> viewModel.saveNoteCommand()}"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:setResourceImage="@{viewModel.isEditMode}"
+            app:tint="@color/white" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
