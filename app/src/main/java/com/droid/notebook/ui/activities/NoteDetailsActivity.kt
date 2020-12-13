@@ -15,13 +15,10 @@ class NoteDetailsActivity : AppCompatActivity() {
     private lateinit var noteDetailsViewModel: NoteDetailsViewModel
 
     private val binding: ActivityNoteDetailsBinding by lazy {
-        DataBindingUtil.setContentView<ActivityNoteDetailsBinding>(
+        DataBindingUtil.setContentView(
             this,
             R.layout.activity_note_details
         )
-            .apply {
-                lifecycleOwner = this@NoteDetailsActivity
-            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +26,7 @@ class NoteDetailsActivity : AppCompatActivity() {
 
         noteDetailsViewModel = ViewModelProvider(this)[NoteDetailsViewModel::class.java]
         binding.viewModel = noteDetailsViewModel
+        binding.lifecycleOwner = this
 
         val hash = intent.getIntExtra(Constants.noteId, -1)
         if (hash != -1) {
