@@ -5,6 +5,9 @@ object Constants {
     const val noteId: String = "noteId"
     const val dateFormat: String = "MMM dd, yyyy"
 
+    const val stringIntentType: String = "text/plain"
+    const val urlFormat: String = "^(http|https)://"
+
     object DataBase {
         const val notesDatabase: String = "notes_database"
         const val noteTable: String = "notes_table"

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.droid.notebook">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".NotebookApplication"
         android:allowBackup="false"
@@ -10,11 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notebook">
-        <activity android:name=".ui.activities.NoteDetailsActivity" />
+        <activity android:name=".ui.activities.NoteDetailsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

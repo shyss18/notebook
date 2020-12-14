@@ -1,5 +1,6 @@
 package com.droid.notebook.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -28,9 +29,15 @@ class NoteDetailsActivity : AppCompatActivity() {
         binding.viewModel = noteDetailsViewModel
         binding.lifecycleOwner = this
 
-        val hash = intent.getIntExtra(Constants.noteId, -1)
-        if (hash != -1) {
-            noteDetailsViewModel.initViewModel(hash)
+        if (intent?.action == Intent.ACTION_SEND) {
+            if (Constants.stringIntentType == intent.type) {
+                noteDetailsViewModel.initViewModel(intent.getStringExtra(Intent.EXTRA_TEXT)!!)
+            }
+        } else {
+            val hash = intent.getIntExtra(Constants.noteId, -1)
+            if (hash != -1) {
+                noteDetailsViewModel.initViewModel(hash)
+            }
         }
     }
 }

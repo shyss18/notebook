@@ -5,9 +5,11 @@ import com.droid.notebook.data.Note
 interface AppNavigator {
     fun navigateToNotebooksActivity()
 
-    fun navigateToNoteDetailsActivity();
+    fun navigateToNoteDetailsActivity()
 
     fun navigateToNoteDetailsActivity(note: Note)
 
-    fun navigateBack();
+    fun navigateBack()
+
+    fun navigateToBrowser(url: String)
 }

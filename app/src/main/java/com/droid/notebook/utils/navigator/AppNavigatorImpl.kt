@@ -2,6 +2,7 @@ package com.droid.notebook.utils.navigator
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import com.droid.notebook.data.Note
 import com.droid.notebook.ui.activities.NoteDetailsActivity
 import com.droid.notebook.ui.activities.NotesActivity
@@ -39,5 +40,11 @@ class AppNavigatorImpl @Inject constructor(private val currentActivity: Activity
 
     override fun navigateBack() {
         currentActivity.finish()
+    }
+
+    override fun navigateToBrowser(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        currentActivity.startActivity(intent)
     }
 }
