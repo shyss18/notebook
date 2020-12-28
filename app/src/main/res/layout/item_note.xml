@@ -14,32 +14,42 @@
             type="com.droid.notebook.ui.adapters.listeners.NotesClickListener" />
     </data>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_item_note"
         android:onClick="@{() -> clickListener.onClick(note)}"
-        android:orientation="vertical"
-        android:padding="20dp">
+        app:cardCornerRadius="10dp"
+        app:setRandomColor="@{true}">
 
-        <TextView
-            android:id="@+id/item_note_text_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{note.title}"
-            android:textAlignment="textStart"
-            android:textColor="@color/primary"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            tools:text="How to make your personal brand stand out online" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            tools:background="@color/orange">
 
-        <TextView
-            android:id="@+id/item_note_text_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@{note.date}"
-            android:textSize="16sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/item_note_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{note.title}"
+                android:textAlignment="textStart"
+                android:textColor="@color/primary"
+                android:textSize="22sp"
+
+                android:textStyle="bold"
+                tools:text="How to make your personal brand stand out online" />
+
+            <TextView
+                android:id="@+id/item_note_text_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{note.date}"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </layout>
